@@ -18,16 +18,6 @@ jobs:
       - run: cargo clippy -- -D warnings
       - run: cargo fmt --all -- --check
 
-  bench:
-    strategy:
-      matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v7
-      - run: rustup toolchain install nightly --profile=minimal
-      - run: cargo +nightly bench
-
   test:
     strategy:
       matrix:
